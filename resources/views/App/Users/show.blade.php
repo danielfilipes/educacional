@@ -16,24 +16,13 @@
         </div>
         <div class="card-body" style="display: block;">
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> Falha ao salvar usuário.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <form method="POST" action="{{route('user.store')}}">
+            <form method="POST" action="">
                 @csrf
                 <div class="row">
                     <div class="col-md-9">
                         <div class="form-group">
                             <label for="inputName">Nome</label>
-                            <input name="name" type="text" class="form-control" id="inputName" placeholder="Escreva o nome do usuário">
+                        <input name="name" type="text" class="form-control" id="inputName" value="{{ $user->name }}">
                         </div>
                     </div>
                     <!-- /.div col-md-9 -->  
@@ -48,23 +37,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputEmail">Email</label>
-                            <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Escreva o email">
+                            <input name="email" type="email" class="form-control" id="inputEmail" value="{{ $user->email }}">
                         </div>
                     </div>
 
                     <div class="col-md-3">
-                        <label for="inputUserType">Tipo de usuário</label>
-                        <select name="user_type_id" id="inputUserType" class="form-control">
-                            {{-- @foreach($userTypes as $item)
-                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach --}}
-                            <option></option>
-                            @foreach ($userTypes as $key => $value)
-                                <option value="{{ $key }}" 0> 
-                                    {{ $value }} 
-                                </option>
-                            @endforeach
-                        </select>
+                        <div class="form-group">                            
+                            <label for="inputUserType">Tipo de usuário</label>
+                        <input type="text" class="form-control" value="{{ $user->userType->name }}">
+                        </div>                        
                     </div>
 
                     <div class="col-md-3">
@@ -91,7 +72,7 @@
                     <div class="col-md-3">
                         <div class="form-group">   
                             <label for="inputBirthday">Data de nascimento</label>
-                            <input name="birthday" type="date" class="form-control" id="inputBirthday" placeholder="Escreva a data de nascimento">
+                            <input name="birthday" type="date" class="form-control" id="inputBirthday" value="{{ $user->birthday }}">
                             {{-- <input name="inputBirthday" id="inputBirthday" type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false"> --}}
                         </div>
 
@@ -111,7 +92,7 @@
                     <div class="col-md-3">
                         <div class="form-group">   
                             <label for="inputPhone">Telefone</label>
-                            <input name="phone" type="text" class="form-control" id="inputPhone" placeholder="Escreva o telefone">
+                            <input name="phone" type="text" class="form-control" id="inputPhone" value="{{ $user->phone }}">
                         </div>
                     </div>
                     <!-- /.div col-md-4 -->

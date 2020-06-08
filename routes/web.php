@@ -22,7 +22,8 @@ Auth::routes();
 Route::middleware('auth')->group(function () {    
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resources([
-        'user' => 'UserController'
+        'user' => 'UserController',
+        'semester' => 'SemesterController'
     ]); 
     // Route::get('/user_type', 'UserTypeController@index')->name('user_type');
 });

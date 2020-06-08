@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
 
             //Dados Educacional
             $table->foreignId('user_type_id')->constrained()->onDelete('cascade');
-            $table->string('cpf');
+            $table->string('cpf')->unique();
             $table->string('rg')->nullable();
             $table->date('birthday');
             $table->string('phone')->nullable();

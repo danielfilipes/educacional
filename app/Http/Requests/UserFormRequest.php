@@ -44,7 +44,7 @@ class UserFormRequest extends FormRequest
             'password.required'  => 'O campo senha é de preenchimento obrigatório.',
             'confirmPassword.required'  => 'O campo repita a senha é de preenchimento obrigatório.',
             'email.required'  => 'O campo email é de preenchimento obrigatório.',
-            'userType.required'  => 'O campo tipo de usuário é de preenchimento obrigatório.',
+            'user_type_id.required'  => 'O campo tipo de usuário é de preenchimento obrigatório.',
             'cpf.required'  => 'O campo CPF é de preenchimento obrigatório.',
             'birthday.required'  => 'O campo data de nascimento é de preenchimento obrigatório.',
             

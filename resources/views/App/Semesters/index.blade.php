@@ -8,7 +8,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Usuários</h3>
+            <h3 class="card-title">Semestres</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i></button>
@@ -26,30 +26,24 @@
                 <table class="table table-striped table-valign-middle">
                   <thead>
                     <tr>
+                        <th>Código</th>
                         <th>Nome</th>
-                        <th>Tipo</th>
-                        <th>E-mail</th>
-                        <th>Telefone</th>
-                        <th>Aniversário</th>
                         <th>Ações</th>
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach ($users as $user)
+                      @foreach ($semesters as $semester)
                         <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->userType->name }}</td>
-                            <td>{{$user->email}}</td>                            
-                            <td>{{$user->phone}}</td>
-                            <td>{{$user->birthday}}</td>
+                            <td>{{ $semester->id }}</td>
+                            <td>{{ $semester->name }}</td>
                             <td>
-                                <form action="{{ route('user.destroy', $user->id) }}" method="POST">
-                                    <a type="submit" name="view" class="btn btn-sm btn-success">Visualizar</a>
-                                    <a type="submit" name="edit" class="btn btn-sm btn-primary">Editar</a>
+                                <form action="{{ route('semester.destroy', $semester->id) }}" method="POST">
+                                    <a type="submit" name="view" class="btn btn-sm btn-success" href="{{ route('semester.show', $semester->id) }}">Visualizar</a>
+                                    <a type="submit" name="edit" class="btn btn-sm btn-primary" href="{{ route('semester.edit', $semester->id) }}">Editar</a>
 
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" name="delete" formmethod="POST" class="btn btn-sm btn-danger">Excluir</button>
+                                    <button type="submit" name="delete" onclick="return confirm('Confirma exclusão do semestre?')" class="btn btn-sm btn-danger">Excluir</button>
                                 </form>
                             </td>
                         </tr> 
@@ -61,7 +55,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer" style="display: block;">
-            <a class="btn btn-primary" href="/user/create">Novo</a>
+            <a class="btn btn-primary" href="/semester/create">Novo</a>
         </div>
         <!-- /.card-body -->           
     </div>

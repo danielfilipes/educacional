@@ -223,6 +223,11 @@ return [
             'url'         => 'user',
             'icon'        => 'far fa-fw fa-user',
         ],
+        [
+            'text'        => 'Semestres',
+            'url'         => 'semester',
+            'icon'        => 'far fa-fw fa-user',
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

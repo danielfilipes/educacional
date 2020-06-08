@@ -7,6 +7,7 @@ use App\User;
 use App\Models\UserType;
 use App\Http\Requests\UserFormRequest;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -43,7 +44,10 @@ class UserController extends Controller
         //
         if(Hash::check($request->confirmPassword, Hash::make($request->password)))
         {
-            return $request;
+            User::create($request->all());
+   
+            return redirect()->route('user.index')
+                ->with('success','Usuário criado com sucesso.');
         }
         else
         {
@@ -62,7 +66,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('app.users.show', compact('user'));
     }
 
     /**
