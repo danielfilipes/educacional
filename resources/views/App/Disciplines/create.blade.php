@@ -8,7 +8,7 @@
 
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Novo Semestre</h3>
+            <h3 class="card-title">Nova Disciplina</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i></button>
@@ -18,7 +18,7 @@
 
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> Falha ao salvar semestre.<br><br>
+                    <strong>Whoops!</strong> Falha ao salvar disciplina.<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -27,20 +27,41 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{route('semester.store')}}">
+            <form method="POST" action="{{route('discipline.store')}}">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="inputName">Nome</label>
-                            <input name="name" type="text" class="form-control" id="inputName" placeholder="Escreva o nome do semestre">
+                            <input name="name" type="text" class="form-control" id="inputName" placeholder="Escreva o nome da disciplina">
                         </div>
                     </div>
-                    <!-- /.div col-md-9 -->  
+                    <!-- /.div col-md-12 --> 
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="inputCode">Código</label>
+                            <input name="code" type="text" class="form-control" id="inputCode" placeholder="Escreva o código da disciplina">
+                        </div>
+                    </div>
+                    <!-- /.div col-md-5 -->
+
+                    <div class="col-md-7">
+                        <label for="inputCourseId">Curso</label>
+                        <select name="course_id" id="inputCourseId" class="form-control">
+                            <option></option>
+                            @foreach ($courses as $key => $value)
+                                <option value="{{ $key }}" 0> 
+                                    {{ $value }} 
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <!-- /.div col-md-17 -->
                 </div>                
                 
                 <button type="submit" class="btn btn-primary">Salvar</button>
-                <a class="btn btn-warning" href="/user">Voltar</a>
+                <a class="btn btn-warning" href="/discipline">Voltar</a>
             </form> 
         </div>
         <!-- /.card-body -->      

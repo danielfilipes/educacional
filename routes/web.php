@@ -23,7 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resources([
         'user' => 'UserController',
-        'semester' => 'SemesterController'
+        'semester' => 'SemesterController',
+        'course' => 'CourseController',
+        'discipline' => 'DisciplineController'
     ]); 
     // Route::get('/user_type', 'UserTypeController@index')->name('user_type');
 });

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Semester;
+use App\Models\Course;
 
-class SemesterController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class SemesterController extends Controller
      */
     public function index()
     {
-        //
-        $semesters = Semester::all();
-        
-        return view('app.semesters.index', compact('semesters'));
+        $courses = Course::all();
+        return view('app.courses.index', compact('courses'));
     }
 
     /**
@@ -27,8 +25,7 @@ class SemesterController extends Controller
      */
     public function create()
     {
-        //
-        return view('app.semesters.create');
+        return view('app.courses.create');
     }
 
     /**
@@ -39,67 +36,63 @@ class SemesterController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'name'=> 'required'
         ]);
-        Semester::create($request->all());
-        return redirect()->route('semester.index')
-            ->with('success', 'Semestre cadastrado com sucesso!');
+        Course::create($request->all());
+        return redirect()->route('course.index')
+            ->with('success', 'Curso cadastrado com sucesso!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Semester  $semester
+     * @param  Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Semester $semester)
+    public function show(Course $course)
     {
-        return view('app.semesters.show', compact('semester'));
+        return view('app.courses.show', compact('course'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Semester  $semester
+     * @param  Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Semester $semester)
+    public function edit(Course $course)
     {
-        //
-        return view('app.semesters.edit', compact('semester'));
+        return view('app.courses.edit', compact('course'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Semester  $semester
+     * @param  Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Semester $semester)
+    public function update(Request $request, Course $course)
     {
         $request->validate([
-            "name" => "required"
+            'name'=> 'required'
         ]);
-
-        $semester->update($request->all());
-
-        return redirect()->route('semester.index')
-            ->with('success', 'Semestre alterado com sucesso!');
+        $course->update($request->all());
+        return redirect()->route('course.index')
+            ->with('success', 'Curso editado com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Semester  $semester
+     * @param  Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Semester $semester)
+    public function destroy(Course $course)
     {
-        $semester->delete();
-        return redirect()->route('semester.index')
-            ->with('success', 'Semestre excluido com sucesso!');
+        $course->delete();
+        return redirect()->route('course.index')
+            ->with('success', 'Curso excluido com sucesso!');
     }
 }

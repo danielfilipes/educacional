@@ -8,7 +8,7 @@
 
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Novo Semestre</h3>
+            <h3 class="card-title">Novo Curso</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i></button>
@@ -18,7 +18,7 @@
 
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> Falha ao salvar semestre.<br><br>
+                    <strong>Whoops!</strong> Falha ao salvar novo curso.<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -27,20 +27,20 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{route('semester.store')}}">
+            <form method="POST" action="{{route('course.store')}}">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="inputName">Nome</label>
-                            <input name="name" type="text" class="form-control" id="inputName" placeholder="Escreva o nome do semestre">
+                            <input name="name" type="text" class="form-control" id="inputName" placeholder="Escreva o nome do curso">
                         </div>
                     </div>
                     <!-- /.div col-md-9 -->  
                 </div>                
                 
                 <button type="submit" class="btn btn-primary">Salvar</button>
-                <a class="btn btn-warning" href="/user">Voltar</a>
+                <a class="btn btn-warning" href="/course">Voltar</a>
             </form> 
         </div>
         <!-- /.card-body -->      

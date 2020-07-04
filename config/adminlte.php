@@ -228,6 +228,16 @@ return [
             'url'         => 'semester',
             'icon'        => 'far fa-fw fa-user',
         ],
+        [
+            'text'        => 'Cursos',
+            'url'         => 'course',
+            'icon'        => 'far fa-fw fa-user',
+        ],
+        [
+            'text'        => 'Disciplinas',
+            'url'         => 'discipline',
+            'icon'        => 'far fa-fw fa-user',
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',
