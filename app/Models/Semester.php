@@ -8,5 +8,10 @@ class Semester extends Model
 {
     protected $table = 'semesters';
 
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'closed',
+        'start_date',
+        'end_date'
+    ];
 }

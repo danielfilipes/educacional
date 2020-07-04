@@ -28,6 +28,7 @@
                     <tr>
                         <th>Código</th>
                         <th>Nome</th>
+                        <th>Qtd. Períodos</th>
                         <th>Ações</th>
                     </tr>
                   </thead>
@@ -36,6 +37,7 @@
                         <tr>
                             <td>{{ $course->id }}</td>
                             <td>{{ $course->name }}</td>
+                            <td>{{ $course->periods }}</td>
                             <td>
                                 <form action="{{ route('course.destroy', $course->id) }}" method="POST">
                                     <a type="submit" name="view" class="btn btn-sm btn-success" href="{{ route('course.show', $course->id) }}">Visualizar</a>

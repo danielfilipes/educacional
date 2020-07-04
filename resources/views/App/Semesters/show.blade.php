@@ -19,7 +19,21 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="inputName">Nome</label>
-                    <input name="name" type="text" class="form-control" id="inputName" value="{{ $semester->name }}" readonly>
+                        <input name="name" type="text" class="form-control" id="inputName" value="{{ $semester->name }}" readonly>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="inputStartDate">Data de início</label>
+                    <input name="start_date" type="date" class="form-control" id="inputStartDate" value="{{ $semester->start_date != null ? date('Y-m-d', strtotime($semester->start_date)) : $semester->start_date }}">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="inputEndDate">Data de encerramento</label>
+                        <input name="end_date" type="date" class="form-control" id="inputEndDate" value="{{ $semester->end_date != null ? date('Y-m-d', strtotime($semester->end_date)) : $semester->end_date }}">
                     </div>
                 </div>
                 <!-- /.div col-md-9 -->  

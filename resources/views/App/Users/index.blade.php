@@ -41,7 +41,7 @@
                             <td>{{ $user->userType->name }}</td>
                             <td>{{$user->email}}</td>                            
                             <td>{{$user->phone}}</td>
-                            <td>{{$user->birthday}}</td>
+                            <td>{{$user->birthday != null ? date('d/m/Y', strtotime($user->birthday)) : ""}}</td>
                             <td>
                                 <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                     <a type="submit" name="view" class="btn btn-sm btn-success">Visualizar</a>

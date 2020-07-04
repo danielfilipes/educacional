@@ -36,11 +36,25 @@
                             <input name="name" type="text" class="form-control" id="inputName" placeholder="Escreva o nome do semestre">
                         </div>
                     </div>
-                    <!-- /.div col-md-9 -->  
+                    <!-- /.div col-md-12 --> 
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="inputStartDate">Data de início</label>
+                            <input name="start_date" type="date" class="form-control" id="inputStartDate" placeholder="Escreva a data de início do semestre">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="inputEndDate">Data de encerramento</label>
+                            <input name="end_date" type="date" class="form-control" id="inputEndDate" placeholder="Escreva a data de encerramento do semestre">
+                        </div>
+                    </div>
                 </div>                
                 
                 <button type="submit" class="btn btn-primary">Salvar</button>
-                <a class="btn btn-warning" href="/user">Voltar</a>
+                <a class="btn btn-warning" href="/semester">Voltar</a>
             </form> 
         </div>
         <!-- /.card-body -->      

@@ -8,7 +8,8 @@ class Course extends Model
 {
     protected $table = 'courses';
     protected $fillable = [
-        'name'
+        'name',
+        'periods'
     ];
 
     public function disciplines()

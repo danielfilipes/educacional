@@ -37,7 +37,8 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=> 'required'
+            'name'=> 'required',
+            'periods' => 'required'
         ]);
         Course::create($request->all());
         return redirect()->route('course.index')
@@ -76,7 +77,8 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
         $request->validate([
-            'name'=> 'required'
+            'name'=> 'required',
+            'periods' => 'required'
         ]);
         $course->update($request->all());
         return redirect()->route('course.index')

@@ -35,6 +35,11 @@
                             <label for="inputName">Nome</label>
                             <input name="name" type="text" class="form-control" id="inputName" placeholder="Escreva o nome do curso">
                         </div>
+
+                        <div class="form-group">
+                            <label for="inputPeriods">Quantidade de períodos</label>
+                            <input name="periods" type="number" min="1" step="1" class="form-control" id="inputPeriods" placeholder="Escreva quantidade de períodos do curso">
+                        </div>
                     </div>
                     <!-- /.div col-md-9 -->  
                 </div>                

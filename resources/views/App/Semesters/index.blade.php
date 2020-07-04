@@ -28,6 +28,9 @@
                     <tr>
                         <th>Código</th>
                         <th>Nome</th>
+                        <th>Data início</th>
+                        <th>Data encerramento</th>
+                        <th>Encerrado</th>
                         <th>Ações</th>
                     </tr>
                   </thead>
@@ -36,6 +39,9 @@
                         <tr>
                             <td>{{ $semester->id }}</td>
                             <td>{{ $semester->name }}</td>
+                            <td>{{ $semester->start_date != null ? date('d/m/Y', strtotime($semester->start_date)) : "" }}</td>
+                            <td>{{ $semester->end_date != null ? date('d/m/Y', strtotime($semester->end_date)) : "" }}</td>
+                            <td>{{ $semester->closed == 0 ? "Não" : "Sim" }}</td>
                             <td>
                                 <form action="{{ route('semester.destroy', $semester->id) }}" method="POST">
                                     <a type="submit" name="view" class="btn btn-sm btn-success" href="{{ route('semester.show', $semester->id) }}">Visualizar</a>

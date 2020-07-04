@@ -34,7 +34,12 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="inputName">Nome</label>
-                        <input name="name" type="text" class="form-control" id="inputName" value="{{ $course->name }}">
+                            <input name="name" type="text" class="form-control" id="inputName" value="{{ $course->name }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPeriods">Quantidade de períodos</label>
+                            <input name="periods" type="number" min="1" step="1" class="form-control" id="inputPeriods" value="{{ $course->periods }}">
                         </div>
                     </div>
                     <!-- /.div col-md-12 -->  
