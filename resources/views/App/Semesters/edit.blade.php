@@ -31,11 +31,20 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="form-group">
                             <label for="inputName">Nome</label>
                             <input name="name" type="text" class="form-control" id="inputName" value="{{ $semester->name }}">
                         </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="inputClosed">Encerrar semestre</label>
+                        <select name="closed" id="inputClosed" class="form-control">
+                            {{-- <option disabled selected>Selecione uma opção</option> --}}
+                            <option value="0" {{ $semester->closed == 0 ? 'selected' : '' }}>Não</option>
+                            <option value="1" {{ $semester->closed == 1 ? 'selected' : '' }}>Sim</option>
+                        </select>
                     </div>
 
                     <div class="col-md-6">
