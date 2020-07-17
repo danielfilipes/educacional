@@ -17,4 +17,14 @@ class Discipline extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function prerequisites()
+    {
+        return $this->belongsToMany(
+            Discipline::class,
+            'discipline_prerequisites', 
+            'main_discipline', 
+            'prerequisite_discipline'
+        );
+    }
 }

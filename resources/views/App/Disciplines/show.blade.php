@@ -36,12 +36,28 @@
                 <!-- /.div col-md-5 -->
 
                 <div class="col-md-7">
-                    <label for="inputCourseId">Curso</label>
-                    <select name="course_id" id="inputCourseId" class="form-control" readonly>
-                        <option> {{ $discipline->course->name }} </option>
-                    </select>
+                    <div class="form-group">
+                        <label for="inputCourseId">Curso</label>
+                        <select name="course_id" id="inputCourseId" class="form-control" readonly>
+                            <option> {{ $discipline->course->name }} </option>
+                        </select>
+                    </div>
                 </div>
-                <!-- /.div col-md-17 -->
+                <!-- /.div col-md-7 -->
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="inputPrerequisite">Pré-requisitos</label>
+                        <select name="disciplines_prerequisite[]" id="inputPrerequisite" 
+                            class="form-control"  multiple="multiple" readonly>
+                            @foreach ($prerequisites as $key => $value)
+                                <option value="{{ $key }}" 0 selected> 
+                                    {{ $value }} 
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>                
             
             <a type="submit" name="index" class="btn btn-sm btn-warning" href="{{ route('discipline.edit', $discipline->id) }}">Editar</a>  
@@ -59,4 +75,10 @@
 
 @section('js')
     {{-- <script> console.log('Hi!'); </script> --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#inputPrerequisite').select2();
+            $('#inputPrerequisite').prop("disabled", true);
+        });
+    </script>
 @stop

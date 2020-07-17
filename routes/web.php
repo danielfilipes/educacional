@@ -28,4 +28,7 @@ Route::middleware('auth')->group(function () {
         'discipline' => 'DisciplineController'
     ]); 
     // Route::get('/user_type', 'UserTypeController@index')->name('user_type');
+
+    //rota para retornar disciplinas de um curso
+    Route::get('/disciplines/course/{id_curso}', 'DisciplineController@disciplinesCourse');
 });

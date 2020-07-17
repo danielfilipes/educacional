@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCurriculaTable extends Migration
+class CreateCurriculumTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCurriculaTable extends Migration
      */
     public function up()
     {
-        Schema::create('curricula', function (Blueprint $table) {
+        Schema::create('curriculum', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->boolean('active');

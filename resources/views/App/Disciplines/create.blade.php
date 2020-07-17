@@ -47,17 +47,35 @@
                     <!-- /.div col-md-5 -->
 
                     <div class="col-md-7">
-                        <label for="inputCourseId">Curso</label>
-                        <select name="course_id" id="inputCourseId" class="form-control">
-                            <option></option>
-                            @foreach ($courses as $key => $value)
-                                <option value="{{ $key }}" 0> 
-                                    {{ $value }} 
-                                </option>
-                            @endforeach
-                        </select>
+                        <div class="form-group">
+                            <label for="inputCourseId">Curso</label>
+                            <select name="course_id" id="inputCourseId" class="form-control" 
+                                onchange="javascript:addPreRequisitesOptions()">
+                                <option></option>
+                                @foreach ($courses as $key => $value)
+                                    <option value="{{ $key }}" 0> 
+                                        {{ $value }} 
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <!-- /.div col-md-17 -->
+                    <!-- /.div col-md-7 -->
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="inputPrerequisite">Pré-requisitos</label>
+                            <select name="disciplines_prerequisite[]" id="inputPrerequisite" 
+                                class="form-control"  multiple="multiple">
+                                <option></option>
+                                {{-- @foreach ($prerequisites as $key => $value)
+                                    <option value="{{ $key }}" 0> 
+                                        {{ $value }} 
+                                    </option>
+                                @endforeach --}}
+                            </select>
+                        </div>
+                    </div>
                 </div>                
                 
                 <button type="submit" class="btn btn-primary">Salvar</button>
@@ -75,4 +93,54 @@
 
 @section('js')
     {{-- <script> console.log('Hi!'); </script> --}}
+    <script type="text/javascript">
+
+        function addPreRequisitesOptions(){
+
+            $('#inputPrerequisite').empty();
+            var firstOption = new Option('', '');
+            $(firstOption).html('');
+            $("#inputPrerequisite").append(firstOption);
+
+            let id_course = document.getElementById('inputCourseId').value;
+            let link = "http://educacional.test/disciplines/course/" + id_course;
+            $.ajax({
+                url: link,
+                type: 'GET',
+                dataType: 'json',
+                })
+                .done(function(data) {
+                    console.log("success");
+
+                    if(data.length > 0){
+                        for(let i = 0; i < data.length; i++){                            
+                            let o = new Option(data[i].name, data[i].id);
+                            $(o).html(data[i].name);
+                            $("#inputPrerequisite").append(o);
+                            // console.log(data[i].name);
+                        }
+                    }
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+
+                // $.ajax({
+                //     type: 'GET',
+                //     url: 'http://educacional.test/disciplines/course/' + id_course,
+                //     success: function(data) {
+                //         // O que pretende fazer aqui.
+                //         //ex:
+                //         console.log('success');
+                //     }
+                // });
+        }
+
+        $(document).ready(function() {
+            $('#inputPrerequisite').select2();
+        });
+    </script>
 @stop
