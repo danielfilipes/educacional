@@ -238,6 +238,11 @@ return [
             'url'         => 'discipline',
             'icon'        => 'far fa-fw fa-user',
         ],
+        [
+            'text'        => 'Grade curricular',
+            'url'         => 'curriculum',
+            'icon'        => 'far fa-fw fa-user',
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

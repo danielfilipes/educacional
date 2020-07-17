@@ -26,14 +26,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="inputStartDate">Data de início</label>
-                    <input name="start_date" type="date" class="form-control" id="inputStartDate" value="{{ $semester->start_date != null ? date('Y-m-d', strtotime($semester->start_date)) : $semester->start_date }}">
+                    <input name="start_date" type="date" class="form-control" id="inputStartDate" value="{{ $semester->start_date != null ? date('Y-m-d', strtotime($semester->start_date)) : $semester->start_date }}" readonly>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="inputEndDate">Data de encerramento</label>
-                        <input name="end_date" type="date" class="form-control" id="inputEndDate" value="{{ $semester->end_date != null ? date('Y-m-d', strtotime($semester->end_date)) : $semester->end_date }}">
+                        <input name="end_date" type="date" class="form-control" id="inputEndDate" value="{{ $semester->end_date != null ? date('Y-m-d', strtotime($semester->end_date)) : $semester->end_date }}" readonly>
                     </div>
                 </div>
                 <!-- /.div col-md-9 -->  

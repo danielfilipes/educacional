@@ -31,6 +31,6 @@ class DisciplinePrerequisites extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('discipline_prerequisites');
     }
 }

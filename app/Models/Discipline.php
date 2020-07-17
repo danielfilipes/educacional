@@ -27,4 +27,9 @@ class Discipline extends Model
             'prerequisite_discipline'
         );
     }
+
+    public function curriculums()
+    {
+        return $this->hasMany(CurriculumDiscipline::class);
+    } 
 }

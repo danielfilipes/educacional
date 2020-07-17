@@ -25,7 +25,8 @@ Route::middleware('auth')->group(function () {
         'user' => 'UserController',
         'semester' => 'SemesterController',
         'course' => 'CourseController',
-        'discipline' => 'DisciplineController'
+        'discipline' => 'DisciplineController',
+        'curriculum' => 'CurriculumController'
     ]); 
     // Route::get('/user_type', 'UserTypeController@index')->name('user_type');
 

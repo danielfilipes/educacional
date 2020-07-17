@@ -15,6 +15,16 @@ class CreateCurriculumDisciplinesTable extends Migration
     {
         Schema::create('curriculum_disciplines', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('curriculum_id');
+            $table->foreign('curriculum_id')->references('id')->on('curriculums')->onDelete('cascade');
+
+            $table->unsignedBigInteger('discipline_id');
+            $table->foreign('discipline_id')->references('id')->on('disciplines')->onDelete('cascade');
+
+            $table->integer('period');
+            $table->integer('workload');
+
             $table->timestamps();
         });
     }
