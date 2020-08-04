@@ -8,7 +8,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Grades Curriculares</h3>
+            <h3 class="card-title">Matrículas em cursos</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i></button>
@@ -26,24 +26,26 @@
                 <table class="table table-striped table-valign-middle">
                   <thead>
                     <tr>
-                        <th>Nome</th>
+                        <th>Nº da Matrícula</th>
+                        <th>Aluno</th>
                         <th>Curso</th>
-                        <th>Data Criação</th>
-                        <th>Ativo</th>
+                        <th>Situação</th>
+                        <th>Data da Matrícula</th>
                         <th>Ações</th>
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach ($curriculums as $curriculum)
+                      @foreach ($registrations as $registration)
                         <tr>
-                            <td>{{ $curriculum->name }}</td>
-                            <td>{{ $curriculum->course->name }}</td>
-                            <td>{{ $curriculum->registered_at != null ? date('d/m/Y', strtotime($curriculum->registered_at)) : ""}}</td>                           
-                            <td>{{ $curriculum->active == 1 ? 'Sim' : 'Não' }}</td>
+                            <td>{{ $registration->registration_number }}</td>
+                            <td>{{ $registration->user->name }}</td>
+                            <td>{{ $registration->course->name }}</td>
+                            <td>{{ $registration->studentRegistrationStatus->name }}</td>
+                            <td>{{ $registration->registration_date != null ? date('d/m/Y', strtotime($registration->registration_date)) : ""}}</td>  
                             <td>
-                                <form action="{{ route('curriculum.destroy', $curriculum->id) }}" method="POST">
-                                    <a type="submit" name="view" class="btn btn-sm btn-success" href="{{ route('curriculum.show', $curriculum->id) }}">Visualizar</a>
-                                    <a type="submit" name="edit" class="btn btn-sm btn-primary" href="{{ route('curriculum.edit', $curriculum->id) }}">Editar</a>
+                                <form action="{{ route('student-registration.destroy', $registration->id) }}" method="POST">
+                                    <a type="submit" name="view" class="btn btn-sm btn-success" href="{{ route('student-registration.show', $registration->id) }}">Visualizar</a>
+                                    <a type="submit" name="edit" class="btn btn-sm btn-primary" href="{{ route('student-registration.edit', $registration->id) }}">Editar</a>
 
                                     @csrf
                                     @method('DELETE')
@@ -59,7 +61,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer" style="display: block;">
-            <a class="btn btn-sm btn-primary" href="/curriculum/create">Novo</a>
+            <a class="btn btn-sm btn-primary" href="/student-registration/create">Novo</a>
         </div>
         <!-- /.card-body -->           
     </div>

@@ -243,6 +243,11 @@ return [
             'url'         => 'curriculum',
             'icon'        => 'far fa-fw fa-user',
         ],
+        [
+            'text'        => 'Matrícula curso',
+            'url'         => 'student-registration',
+            'icon'        => 'far fa-fw fa-user',
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

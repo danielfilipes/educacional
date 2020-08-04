@@ -21,4 +21,9 @@ class Course extends Model
     {
         return $this->hasMany(Curriculum::class);
     }
+
+    public function studentRegistrations()
+    {
+        return $this->hasMany(StudentRegistration::class);
+    }
 }
