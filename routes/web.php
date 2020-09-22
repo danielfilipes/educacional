@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::middleware('auth')->group(function () {    
+Route::middleware('auth')->group(function () {  
+    Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resources([
         'user' => 'UserController',
@@ -27,7 +28,9 @@ Route::middleware('auth')->group(function () {
         'course' => 'CourseController',
         'discipline' => 'DisciplineController',
         'curriculum' => 'CurriculumController',
-        'student-registration' => 'StudentRegistrationController'
+        'student-registration' => 'StudentRegistrationController',
+        'discipline-class' => 'DisciplineClassController',
+        'class-registration' => 'ClassRegistrationController'
     ]); 
     // Route::get('/user_type', 'UserTypeController@index')->name('user_type');
 

@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>S</b>Cursos',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'SCursos',
 
     /*
     |--------------------------------------------------------------------------
@@ -246,6 +246,16 @@ return [
         [
             'text'        => 'Matrícula curso',
             'url'         => 'student-registration',
+            'icon'        => 'far fa-fw fa-user',
+        ],
+        [
+            'text'        => 'Turmas',
+            'url'         => 'discipline-class',
+            'icon'        => 'far fa-fw fa-user',
+        ],
+        [
+            'text'        => 'Matrícula turma',
+            'url'         => 'class-registration/create',
             'icon'        => 'far fa-fw fa-user',
         ],
         // ['header' => 'account_settings'],

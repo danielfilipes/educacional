@@ -5,12 +5,12 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Sistema de gestão acadêmico</h1>
 @stop
 
 @section('content')
 
-<div class="card">
+{{-- <div class="card">
     <div class="card-header">
         <h3 class="card-title">Projects</h3>
 
@@ -23,7 +23,7 @@
       
     </div>
 <!-- /.card-body -->
-</div>
+</div> --}}
 
 @stop
 
