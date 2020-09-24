@@ -133,7 +133,6 @@
                             <table class="table table-striped table-valign-middle" name="hourTable">
                                 <thead>
                                   <tr>
-                                      <th style="width: 0px;"></th>
                                       <th>Dia da semana</th>
                                       <th>Horário início</th>
                                       <th>Horário fim</th>
@@ -141,87 +140,12 @@
                                   </tr>
                                 </thead>
                                 <tbody name="hourTableBody" id="hourTableBody">
-                                    <tr v-for="row in data" v-if="row.id != null && row.id != ''">
+                                    {{-- <tr v-for="row in data" v-if="row.id != null && row.id != ''">
                                         <td>{{ Form::hidden('row[id][]', null, ['class'=>'no-border', 'readonly'=>'readonly', 'v-model' => 'row.id']) }}</td>
                                         <td class="hidden">{{ Form::text('row[week_day][]', null, ['class'=>'no-border text-uppercase', 'readonly'=>'readonly', 'v-model' => 'row.week_day']) }}</td>
                                         <td>{{ Form::time('row[hour_begin][]', null, ['class'=>'no-border text-uppercase', 'readonly'=>'readonly', 'v-model' => 'row.hour_begin']) }}</td>
                                         <td>{{ Form::time('row[hour_end][]', null, ['class'=>'no-border text-uppercase', 'readonly'=>'readonly', 'v-model' => 'row.hour_end']) }}</td>
-                                    </tr>
-
-                                    {{-- <div class="modal fade" id="myModal2" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">Editar concentrador</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">  
-                                                                <label class="control-label">Identificador Único</label>
-                                                                <input type="number" class="form-control text-uppercase" v-model="record.id_sabesp" placeholder='Identificador Unico' step="1" min="0">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Operadora</label>
-                                                                <select class="form-control text-uppercase" v-model="record.phone_operator_id" >
-                                                                    <option selected="selected" disabled="disabled" hidden="hidden" value="">Selecione a operadora</option>
-                                                                    <option value="1">VIVO</option>
-                                                                    <option value="2">CLARO</option>
-                                                                    <option value="3">TIM</option>
-                                                                    <option value="4">OI</option>
-                                                                    <option value="5">NEXTEL</option>
-                                                                    <option value="6">ALGAR</option>
-                                                                    <option value="7">SERCOMTEL</option>
-                                                                    <option value="8">MVNO'S</option>                                                        
-                                                                    <option value="9">OUTROS</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Número de Telefone</label>
-                                                                <input class="form-control text-uppercase" v-model="record.sin_card_number" placeholder='Telefone' maxlength="30">
-                                                                    
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">                                            
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label class="control-label">E-mail</label>
-                                                                <input class="form-control text-uppercase" v-model="record.support_email" placeholder='E-mail' >
-                                                            </div>
-                                                        </div>                                            
-                                                    </div>                                    
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" @click="doEdit()">Salvar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-
-
-
-
-                                    {{-- @foreach ($disciplineClass->classSchedules as $schedule)
-                                      <tr>
-                                          <td>{{ $schedule->week_day }}</td>
-                                          <td>{{ $schedule->begin_time }}</td>
-                                          <td>{{ $schedule->end_time }}</td>
-                                          <td>
-                                              <a href="#" id="btn_remove" class="btn btn-sm btn-danger">Remover</a>
-                                        </td>
-                                      </tr> 
-                                    @endforeach                  --}}
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>
@@ -250,8 +174,11 @@
             var endTime = document.getElementById('inputEndTime');
 
             if(weekDay.value != null && weekDay.selectedIndex > 0 && beginTime.value != null && beginTime.value != '' && endTime.value != null && endTime.value != ''){
-                var tableRow = "<tr><td>" + weekDay.value + "</td><td>" + beginTime.value + "</td><td>" + 
-                endTime.value + "</td><td><a class='btn btn-sm btn-danger' onclick='removeSchedule(this)' style='color: #FFFFFF'>Remover</a></td></tr>";
+                var tableRow = "<tr>" + 
+                    "<td>" + weekDay.value + "<input type='hidden' name='week_day[]' value='" + weekDay.value + "' /></td>" +
+                    "<td>" + beginTime.value + "<input type='hidden' name='begin_time[]' value='" + beginTime.value + "' /></td>" +
+                    "<td>" + endTime.value + "<input type='hidden' name='end_time[]' value='" + endTime.value + "' /></td>" + 
+                    "<td><a class='btn btn-sm btn-danger' onclick='removeSchedule(this)' style='color: #FFFFFF'>Remover</a></td></tr>";
                 tableBody.append(tableRow);
 
                 weekDay.selectedIndex = 0;

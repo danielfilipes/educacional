@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\DisciplineClass;
-use App\Models\Discipline;
-use App\User;
-use App\Models\Semester;
 use App\Models\ClassSchedule;
+use App\Models\Discipline;
+use App\Models\DisciplineClass;
+use App\Models\Semester;
+use App\User;
+use Illuminate\Http\Request;
 
 class DisciplineClassController extends Controller
 {
@@ -54,13 +54,23 @@ class DisciplineClassController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
+
         $request->validate([
             'discipline_id'=> 'required',
             'user_id' => 'required',
-            'semester_id' => 'required'
+            'semester_id' => 'required',
+            'vacancies' => 'required',
+            'closed' => 'required'
         ]);
 
         $insert = DisciplineClass::create($request->all());
+
+        if($insert){
+            if(count($request->week_day) > 0){
+                // for($i = 0; i < count($request->week_day[]))
+            }
+        }
         
         if($insert)
             return redirect()->route('discipline-class.index')->with('success', 'Turma criada com sucesso!');
