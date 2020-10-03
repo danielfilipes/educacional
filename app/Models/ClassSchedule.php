@@ -10,6 +10,7 @@ class ClassSchedule extends Model
 
     protected $fillable= [
         'discipline_class_id',
+        'week_day',
         'begin_time',
         'end_time'
     ];

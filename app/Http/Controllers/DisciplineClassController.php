@@ -54,8 +54,6 @@ class DisciplineClassController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-
         $request->validate([
             'discipline_id'=> 'required',
             'user_id' => 'required',
@@ -68,12 +66,16 @@ class DisciplineClassController extends Controller
 
         if($insert){
             if(count($request->week_day) > 0){
-                // for($i = 0; i < count($request->week_day[]))
+                for($i = 0; $i < count($request->week_day); $i++){
+                    $classSchedule['discipline_class_id'] = $insert->id;
+                    $classSchedule['week_day'] = $request->week_day[$i];
+                    $classSchedule['begin_time'] = $request->begin_time[$i];
+                    $classSchedule['end_time'] = $request->end_time[$i];
+                    ClassSchedule::create($classSchedule);
+                }
             }
-        }
-        
-        if($insert)
             return redirect()->route('discipline-class.index')->with('success', 'Turma criada com sucesso!');
+        }
         else
             return redirect()->route('discipline-class.index')->with('error', 'Falha ao criar turma!');
     }
@@ -101,7 +103,17 @@ class DisciplineClassController extends Controller
         $semesters = Semester::pluck('name', 'id');
         $disciplines = Discipline::pluck('name', 'id');
 
-        return view('app.disciplineClasses.edit', compact(['disciplineClass', 'professors', 'semesters', 'disciplines']));
+        $weekDays = [
+            'Domingo', 
+            'Segunda-feira', 
+            'Terça-feira', 
+            'Quarta-feira', 
+            'Quinta-feira', 
+            'Sexta-feira', 
+            'Sábado'
+        ];
+
+        return view('app.disciplineClasses.edit', compact(['disciplineClass', 'professors', 'semesters', 'disciplines', 'weekDays']));
     }
 
     /**
@@ -119,9 +131,35 @@ class DisciplineClassController extends Controller
             'semester_id' => 'required'
         ]);
 
-        $insert = $disciplineClass->update($request->all());
+        for($i = 0; $i < count($request->week_day); $i++){
+
+            $requestClassSchedule['discipline_class_id'] = $disciplineClass->id;
+            $requestClassSchedule['week_day'] = $request->week_day[$i];
+            $requestClassSchedule['begin_time'] = $request->begin_time[$i];
+            $requestClassSchedule['end_time'] = $request->end_time[$i];
+
+            //apaga
+            // foreach($disciplineClass->classSchedules as $schedule){
+            //     if()
+            // }
+
+            //edita
+            if(isset($request->id[$i])){
+                $classSchedule = ClassSchedule::findOrFail($request->id[$i]);
+                $classSchedule->update($requestClassSchedule);               
+            }
+            //cria
+            else{
+                ClassSchedule::create($requestClassSchedule);
+            }
+            
+        }
+
+        // dd($form_data);
+
+        $update = $disciplineClass->update($request->all());
         
-        if($insert)
+        if($update)
             return redirect()->route('discipline-class.index')->with('success', 'Turma alterada com sucesso!');
         else
             return redirect()->route('discipline-class.index')->with('error', 'Falha ao alterar turma!');

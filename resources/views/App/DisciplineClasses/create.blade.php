@@ -140,12 +140,6 @@
                                   </tr>
                                 </thead>
                                 <tbody name="hourTableBody" id="hourTableBody">
-                                    {{-- <tr v-for="row in data" v-if="row.id != null && row.id != ''">
-                                        <td>{{ Form::hidden('row[id][]', null, ['class'=>'no-border', 'readonly'=>'readonly', 'v-model' => 'row.id']) }}</td>
-                                        <td class="hidden">{{ Form::text('row[week_day][]', null, ['class'=>'no-border text-uppercase', 'readonly'=>'readonly', 'v-model' => 'row.week_day']) }}</td>
-                                        <td>{{ Form::time('row[hour_begin][]', null, ['class'=>'no-border text-uppercase', 'readonly'=>'readonly', 'v-model' => 'row.hour_begin']) }}</td>
-                                        <td>{{ Form::time('row[hour_end][]', null, ['class'=>'no-border text-uppercase', 'readonly'=>'readonly', 'v-model' => 'row.hour_end']) }}</td>
-                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>
